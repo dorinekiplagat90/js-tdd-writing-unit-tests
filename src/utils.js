@@ -1,12 +1,19 @@
-// Your code here
-export function pointsForWord(word) {
-  let points = 0;
-  for (const char of word) {
-    if (["a", "e", "i", "o", "u"].includes(char)) {
-      points += 1;
-    } else {
-      points += 2;
+function isPalindrome(word) {
+    if (typeof word !== 'string') {
+      throw new Error("Input must be a string");
     }
+  
+    if (word.length === 0) {
+      return false;
+    }
+  
+    if (!/^[A-Za-z]+$/.test(word)) {
+      throw new Error("Input must only contain alphabetic characters");
+    }
+  
+    const normalized = word.toLowerCase();
+    const reversed = normalized.split("").reverse().join("");
+    return normalized === reversed;
   }
-  return points;
-}
+  
+  module.exports = { isPalindrome };
